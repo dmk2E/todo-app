@@ -2,6 +2,7 @@
 @import "bootstrap";
 
 $light-gray:#777;
+$completed-color: #aaa;
 $link-color:#1a0dab;
 
 @mixin box_sizing {
@@ -39,6 +40,11 @@ textarea {
   align-items:flex-start;
   flex-wrap:wrap;
   align-content:space-between;
+}
+
+.completed{
+  color: $completed-color;
+  text-decoration: line-through;
 }
 
 /* typography */

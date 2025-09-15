@@ -1,1 +1,18 @@
 <% provide(:title, 'My page') %>
+<h1>Your todos</h1>
+<div class="row center">
+  <div class="col-md-6 col-md-offset-3">
+    <ul>
+      <% @todos.each do |todo| %>
+        <% class_name = '' %>
+        <% if todo.completed %>
+          <% class_name = 'completed' %>
+        <% end %>
+        <li>
+          <span class=<%= class_name %>>" todo.name "</span> - <% link_to 'completed', '#' %> - <% link_to 'delete', '#' %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <%= link_to "New", new_user_todo(params[:user_id]), class: "btn btn-lg btn-primary" %>
+</div>

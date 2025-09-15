@@ -9,7 +9,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     get root_path
     assert_response :success
     assert_select 'a[href=?]', root_path, count: 2
-    assert_select 'a[href=?]', '#'
+    assert_select 'a[href=?]', signup_path
     assert_select 'a[href=?]', '#'
     assert_select 'a[href=?]', @account_link
     assert_select 'title', full_title()

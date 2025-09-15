@@ -16,7 +16,6 @@ class TodosController < ApplicationController
   end
 
   def update
-    # @user = User.find(params[:user_id])
     @todo = Todo.find(params[:id])
     @todo.update_attribute(:completed, !@todo.completed)
     redirect_to user_path(params[:user_id])

@@ -1,6 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$light-gray:#777;
+$link-color:#1a0dab;
+
 // universal
 body {
   padding-top: 60px;
@@ -40,7 +43,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #777;
+  color: $light-gray;
 }
 
 p {
@@ -63,4 +66,45 @@ p {
     color: #fff;
     text-decoration: none;
   }
+}
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  padding:5px 10px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+}
+
+footer a {
+  color: $link-color;
+  &:hover {
+    text-decoration:none;
+  }
+}
+
+footer small {
+  float: left;
+}
+
+footer ul {
+  float: right;
+  list-style: none;
+}
+
+footer ul li {
+  float: left;
+  margin-left: 15px;
+}
+
+.tech-stack {
+  width:100vw;
+  padding:0px 2rem;
+  display:flex;
+  flex-direction:row;
+  justify-content:flex-start;
+  align-items:flex-start;
+  flex-wrap:wrap;
+  align-content:space-between;
 }

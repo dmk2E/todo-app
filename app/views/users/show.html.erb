@@ -1,1 +1,42 @@
 <% provide(:title, 'My page') %>
+<h1><%= @user_name %>'s todos</h1>
+<div class="flex-row">
+  <table>
+    <% @todos.each do |todo| %>
+      <% class_name = '' %>
+      <% if todo.completed %>
+        <% class_name = 'completed' %>
+        <% btn_content = 'reset' %>
+      <% else %>
+        <% btn_content = 'completed' %>
+      <% end %>
+      <tr>
+        <td>
+          ・
+        </td>
+        <td class="<%= class_name %>">
+          " <%= todo.name %>"
+        </td>
+        <td>
+          -
+        </td>
+        <td class="center">
+          <%= 
+            link_to btn_content, 
+            user_todo_path(todo.user_id, todo.id), data: {turbo_method: 'patch'}, 
+                                                   class:'btn btn-lg btn-success margin-side'
+          %>
+        </td>
+        <td>
+          <%= 
+            link_to 'delete', user_todo_path(todo.user_id, todo.id), 
+                                data:{turbo_method: 'delete', 
+                                      turbo_confirm: 'Are you sure?'}, 
+                                class:'btn btn-lg btn-danger margin-side'
+          %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <%= link_to 'New', new_user_todo_path(params[:id]), class: "btn btn-lg btn-primary" %>
+</div>

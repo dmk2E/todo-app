@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user_name = User.find(params[:id]).name
+    @todos = Todo.where(user_id: params[:id])
   end
 
   def create
@@ -15,6 +17,12 @@ class UsersController < ApplicationController
     else
       render 'new', status: :unprocessable_entity
     end
+  end
+
+  def update
+  end
+
+  def destroy
   end
 
   private

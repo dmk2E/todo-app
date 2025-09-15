@@ -1,18 +1,42 @@
 <% provide(:title, 'My page') %>
 <h1>Your todos</h1>
-<div class="row center">
-  <div class="col-md-6 col-md-offset-3">
-    <ul>
-      <% @todos.each do |todo| %>
-        <% class_name = '' %>
-        <% if todo.completed %>
-          <% class_name = 'completed' %>
-        <% end %>
-        <li>
-          <span class=<%= class_name %>>" todo.name "</span> - <% link_to 'completed', '#' %> - <% link_to 'delete', '#' %>
-        </li>
+<div class="flex-row">
+  <table>
+    <% @todos.each do |todo| %>
+      <% class_name = '' %>
+      <% if todo.completed %>
+        <% class_name = 'completed' %>
+        <% btn_content = 'reset' %>
+      <% else %>
+        <% btn_content = 'completed' %>
       <% end %>
-    </ul>
-    <%= link_to 'New', new_user_todo_path(params[:id]), class: "btn btn-lg btn-primary" %>
-  </div>
+      <tr>
+        <td>
+          ・
+        </td>
+        <td class="<%= class_name %>">
+          " <%= todo.name %>"
+        </td>
+        <td>
+          -
+        </td>
+        <td class="center">
+          <%= 
+            link_to btn_content, 
+            user_todo_path(todo.user_id, todo.id), data: {turbo_method: 'patch'}, 
+                                                   class:'btn btn-lg btn-success margin-side'
+          %>
+        </td>
+        <td>
+          <%= 
+            link_to 'delete', user_todo_path(todo.user_id, todo.id), 
+                                data:{turbo_method: 'delete', 
+                                      turbo_confirm: 'Are you sure?'}, 
+                                class:'btn btn-lg btn-danger margin-side'
+          %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <%= link_to 'New', new_user_todo_path(params[:id]), class: "btn btn-lg btn-primary" %>
 </div>

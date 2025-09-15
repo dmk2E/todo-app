@@ -47,6 +47,18 @@ textarea {
   text-decoration: line-through;
 }
 
+.flex-row{
+  font-size: 5rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  align-items:center;
+}
+
+.margin-side{
+  margin: 0rem 1rem;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {

@@ -4,6 +4,12 @@
 $light-gray:#777;
 $link-color:#1a0dab;
 
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
 // universal
 body {
   padding-top: 60px;
@@ -22,6 +28,17 @@ textarea {
   h1 {
     margin-bottom: 10px;
   }
+}
+
+.tech-stack {
+  width:100vw;
+  padding:0px 2rem;
+  display:flex;
+  flex-direction:row;
+  justify-content:flex-start;
+  align-items:flex-start;
+  flex-wrap:wrap;
+  align-content:space-between;
 }
 
 /* typography */
@@ -97,13 +114,15 @@ footer {
 
 }
 
-.tech-stack {
-  width:100vw;
-  padding:0px 2rem;
-  display:flex;
-  flex-direction:row;
-  justify-content:flex-start;
-  align-items:flex-start;
-  flex-wrap:wrap;
-  align-content:space-between;
+/* forms */
+
+input, textarea {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
 }

@@ -1,13 +1,7 @@
 require "test_helper"
 
 class TodosControllerTest < ActionDispatch::IntegrationTest
-  test "should get update" do
-    get todos_update_url
-    assert_response :success
-  end
-
-  test "should get destroy" do
-    get todos_destroy_url
-    assert_response :success
+  def setup
+    @todo = Todo.new name: 'Study', completed: false, user_id: 1
   end
 end

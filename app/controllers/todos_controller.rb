@@ -1,15 +1,17 @@
 class TodosController < ApplicationController
   def new
+    @user = User.find(params[:user_id])
     @todo = Todo.new
   end
 
   def create
     @todo = Todo.new(todo_params)
+    @todo.user_id = params[:user_id]
     @todo.completed = false
-    if todo.save
+    if @todo.save
       redirect_to user_path(@todo.user_id)
     else
-      render 'show', status: :unprocessable_entity
+      render 'todos/new', status: :unprocessable_entity
     end
   end
 
@@ -21,6 +23,6 @@ class TodosController < ApplicationController
 
   private
     def todo_params
-      params.require(:todo).permit(:name, :completed, :user_id)
+      params.require(:todo).permit(:name)
     end
 end

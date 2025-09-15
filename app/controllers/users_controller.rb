@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user_name = User.find(params[:id]).name
     @todos = Todo.where(user_id: params[:id])
   end
 

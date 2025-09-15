@@ -1,5 +1,5 @@
 <% provide(:title, 'My page') %>
-<h1>Your todos</h1>
+<h1><%= @user_name %>'s todos</h1>
 <div class="flex-row">
   <table>
     <% @todos.each do |todo| %>
